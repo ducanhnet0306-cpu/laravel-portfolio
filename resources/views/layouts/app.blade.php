@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#2563eb">
 
+    <script>
+        (function () {
+            try {
+                var key = 'portfolio-theme';
+                var stored = localStorage.getItem(key);
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var dark = stored === 'dark' || (stored !== 'light' && prefersDark);
+                var root = document.documentElement;
+                if (dark) {
+                    root.classList.add('dark');
+                } else {
+                    root.classList.remove('dark');
+                }
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) {
+                    meta.setAttribute('content', dark ? '#0f172a' : '#2563eb');
+                }
+            } catch (e) { /* localStorage unavailable */ }
+        })();
+    </script>
+
     <title>{{ $title ?? ($portfolio->fullName().' — '.$portfolio->tagline()) }}</title>
     <meta name="description" content="{{ $description ?? $portfolio->tagline() }}">
 
@@ -22,7 +43,7 @@
 </head>
 <body class="min-h-screen antialiased">
 
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-600 focus:px-3 focus:py-2 focus:text-white">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-600 focus:px-3 focus:py-2 focus:text-white dark:focus:bg-brand-500">
         Bỏ qua tới nội dung chính
     </a>
 

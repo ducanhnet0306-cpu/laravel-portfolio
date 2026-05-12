@@ -1,8 +1,42 @@
 import './bootstrap';
 
+const THEME_STORAGE_KEY = 'portfolio-theme';
+
+function syncThemeColorMeta() {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+        return;
+    }
+    meta.setAttribute(
+        'content',
+        document.documentElement.classList.contains('dark') ? '#0f172a' : '#2563eb',
+    );
+}
+
+function initThemeToggle() {
+    document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const root = document.documentElement;
+            const nextDark = !root.classList.contains('dark');
+            root.classList.toggle('dark', nextDark);
+            localStorage.setItem(THEME_STORAGE_KEY, nextDark ? 'dark' : 'light');
+            syncThemeColorMeta();
+        });
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (localStorage.getItem(THEME_STORAGE_KEY) !== null) {
+            return;
+        }
+        document.documentElement.classList.toggle('dark', e.matches);
+        syncThemeColorMeta();
+    });
+}
+
 // Reveal-on-scroll: any element with the .reveal class fades up the first time
 // it enters the viewport. Cheap, dependency-free, and respects reduced motion.
 document.addEventListener('DOMContentLoaded', () => {
+    initThemeToggle();
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const reveals = document.querySelectorAll('.reveal');
 

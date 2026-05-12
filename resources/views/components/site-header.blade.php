@@ -10,10 +10,10 @@
     ];
 @endphp
 
-<header class="sticky top-0 z-40 border-b border-slate-100 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/65">
+<header class="sticky top-0 z-40 border-b border-slate-100 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/65 dark:border-slate-800 dark:bg-slate-950/80 dark:supports-[backdrop-filter]:bg-slate-950/70">
     <div class="container-page flex h-16 items-center justify-between">
 
-        <a href="{{ route('portfolio.index') }}" class="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-slate-900">
+        <a href="{{ route('portfolio.index') }}" class="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-slate-900 dark:text-slate-100">
             <span class="grid h-9 w-9 place-items-center rounded-xl bg-brand-600 text-white shadow-soft">
                 {{ \Illuminate\Support\Str::of($portfolio->fullName())->explode(' ')->map(fn($w) => mb_substr($w, 0, 1))->join('') }}
             </span>
@@ -23,10 +23,20 @@
         <nav class="hidden items-center gap-1 md:flex" aria-label="Điều hướng chính">
             @foreach ($links as $link)
                 <a href="{{ $link['href'] }}"
-                   class="rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">
+                   class="rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-50 hover:text-brand-700 dark:text-slate-300 dark:hover:bg-brand-950/50 dark:hover:text-brand-400">
                     {{ $link['label'] }}
                 </a>
             @endforeach
+
+            <button type="button"
+                    data-theme-toggle
+                    class="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full text-slate-600 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                    title="Chuyển chế độ sáng / tối"
+                    aria-label="Chuyển chế độ sáng hoặc tối">
+                <span class="dark:hidden"><x-icon name="moon" class="h-5 w-5" /></span>
+                <span class="hidden dark:inline"><x-icon name="sun" class="h-5 w-5" /></span>
+            </button>
+
             @if(! empty($portfolio->owner['resume_url']))
                 <a href="{{ $portfolio->owner['resume_url'] }}" class="ml-2 btn-primary">
                     Tải CV
@@ -36,27 +46,38 @@
             @endif
         </nav>
 
-        <button type="button"
-                data-mobile-nav-toggle
-                aria-controls="mobile-nav"
-                aria-expanded="false"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 md:hidden">
-            <span class="sr-only">Mở menu</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" class="h-6 w-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-            </svg>
-        </button>
+        <div class="flex items-center gap-2 md:hidden">
+            <button type="button"
+                    data-theme-toggle
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+                    title="Chuyển chế độ sáng / tối"
+                    aria-label="Chuyển chế độ sáng hoặc tối">
+                <span class="dark:hidden"><x-icon name="moon" class="h-5 w-5" /></span>
+                <span class="hidden dark:inline"><x-icon name="sun" class="h-5 w-5" /></span>
+            </button>
+
+            <button type="button"
+                    data-mobile-nav-toggle
+                    aria-controls="mobile-nav"
+                    aria-expanded="false"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">
+                <span class="sr-only">Mở menu</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                </svg>
+            </button>
+        </div>
     </div>
 
     <nav id="mobile-nav"
          data-mobile-nav
          aria-label="Điều hướng di động"
-         class="md:hidden hidden border-t border-slate-100 bg-white">
+         class="md:hidden hidden border-t border-slate-100 bg-white dark:border-slate-800 dark:bg-slate-950">
         <div class="container-page flex flex-col gap-1 py-3">
             @foreach ($links as $link)
                 <a href="{{ $link['href'] }}"
-                   class="rounded-lg px-3 py-2 text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700">
+                   class="rounded-lg px-3 py-2 text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700 dark:text-slate-200 dark:hover:bg-brand-950/40 dark:hover:text-brand-400">
                     {{ $link['label'] }}
                 </a>
             @endforeach

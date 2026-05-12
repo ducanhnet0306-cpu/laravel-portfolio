@@ -2,7 +2,7 @@
 
 @php $contact = $portfolio->contact; @endphp
 
-<section id="contact" class="section bg-white">
+<section id="contact" class="section bg-white dark:bg-slate-950">
     <div class="container-page grid gap-12 lg:grid-cols-12">
 
         <div class="lg:col-span-5 reveal">
@@ -10,13 +10,13 @@
             <h2 class="section-title text-balance">Cùng nhau tạo ra điều gì đó tuyệt vời.</h2>
             <p class="section-lead">{{ $contact['lead'] ?? '' }}</p>
 
-            <ul class="mt-8 space-y-4 text-sm text-slate-700">
+            <ul class="mt-8 space-y-4 text-sm text-slate-700 dark:text-slate-300">
                 @if(! empty($portfolio->owner['email']))
                     <li class="flex items-center gap-3">
-                        <span class="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-700">
+                        <span class="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-700 dark:bg-brand-950/50 dark:text-brand-400">
                             <x-icon name="mail" class="h-5 w-5" />
                         </span>
-                        <a href="mailto:{{ $portfolio->owner['email'] }}" class="font-medium hover:text-brand-700">
+                        <a href="mailto:{{ $portfolio->owner['email'] }}" class="font-medium hover:text-brand-700 dark:hover:text-brand-400">
                             {{ $portfolio->owner['email'] }}
                         </a>
                     </li>
@@ -24,10 +24,10 @@
 
                 @if(! empty($portfolio->owner['phone']))
                     <li class="flex items-center gap-3">
-                        <span class="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-700">
+                        <span class="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-700 dark:bg-brand-950/50 dark:text-brand-400">
                             <x-icon name="phone" class="h-5 w-5" />
                         </span>
-                        <a href="tel:{{ preg_replace('/\s+/', '', $portfolio->owner['phone']) }}" class="font-medium hover:text-brand-700">
+                        <a href="tel:{{ preg_replace('/\s+/', '', $portfolio->owner['phone']) }}" class="font-medium hover:text-brand-700 dark:hover:text-brand-400">
                             {{ $portfolio->owner['phone'] }}
                         </a>
                     </li>
@@ -35,7 +35,7 @@
 
                 @if(! empty($contact['address']))
                     <li class="flex items-center gap-3">
-                        <span class="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-700">
+                        <span class="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-700 dark:bg-brand-950/50 dark:text-brand-400">
                             <x-icon name="map" class="h-5 w-5" />
                         </span>
                         <span class="font-medium">{{ $contact['address'] }}</span>
@@ -46,7 +46,7 @@
             <div class="mt-8 flex flex-wrap gap-2">
                 @foreach ($portfolio->socials as $social)
                     <a href="{{ $social->url }}" target="_blank" rel="noopener"
-                       class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:border-brand-400 hover:text-brand-700"
+                       class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:border-brand-400 hover:text-brand-700 dark:border-slate-600 dark:text-slate-400 dark:hover:border-brand-500 dark:hover:text-brand-400"
                        aria-label="{{ $social->label }}">
                         <x-icon :name="$social->icon" class="h-5 w-5" />
                     </a>
@@ -56,10 +56,10 @@
 
         <div class="lg:col-span-7 reveal">
             <div class="rounded-3xl bg-gradient-to-br from-brand-600 to-brand-800 p-1 shadow-soft">
-                <div class="rounded-[1.4rem] bg-white p-6 sm:p-8">
+                <div class="rounded-[1.4rem] bg-white p-6 sm:p-8 dark:bg-slate-900">
                     @if (session('contact_status'))
                         <div role="status"
-                             class="mb-6 flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
+                             class="mb-6 flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800 dark:border-emerald-800/60 dark:bg-emerald-950/40 dark:text-emerald-200">
                             <span class="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-emerald-600 text-white">
                                 <x-icon name="check" class="h-3.5 w-3.5" />
                             </span>
@@ -111,7 +111,7 @@
                                class="hidden" aria-hidden="true">
 
                         <div class="flex flex-col-reverse items-stretch justify-between gap-3 sm:flex-row sm:items-center">
-                            <p class="text-xs text-slate-500">
+                            <p class="text-xs text-slate-500 dark:text-slate-400">
                                 Bằng cách gửi, bạn đồng ý cho phép tôi liên hệ lại qua email.
                             </p>
                             <button type="submit" class="btn-primary">

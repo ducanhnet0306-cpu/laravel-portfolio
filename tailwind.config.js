@@ -4,6 +4,7 @@ import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'class',
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
@@ -38,6 +39,8 @@ export default {
             backgroundImage: {
                 'hero-radial':
                     'radial-gradient(circle at 20% 20%, rgba(59,130,246,0.18), transparent 45%), radial-gradient(circle at 80% 0%, rgba(96,165,250,0.18), transparent 50%)',
+                'hero-radial-dark':
+                    'radial-gradient(circle at 20% 20%, rgba(59,130,246,0.22), transparent 45%), radial-gradient(circle at 80% 0%, rgba(14,165,233,0.12), transparent 50%)',
             },
             animation: {
                 'fade-up': 'fadeUp 0.7s ease-out both',

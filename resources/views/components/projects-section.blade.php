@@ -1,6 +1,6 @@
 @props(['portfolio'])
 
-<section id="projects" class="section bg-white">
+<section id="projects" class="section bg-white dark:bg-slate-950">
     <div class="container-page">
 
         <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end reveal">

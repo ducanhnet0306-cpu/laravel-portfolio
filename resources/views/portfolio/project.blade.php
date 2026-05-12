@@ -1,18 +1,18 @@
 @extends('layouts.app', ['title' => $project->title.' — Dự án'])
 
 @section('content')
-    <section class="section bg-white">
+    <section class="section bg-white dark:bg-slate-950">
         <div class="container-page max-w-3xl">
             <a href="{{ route('portfolio.index') }}#projects"
-               class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-900">
+               class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-900 dark:text-brand-400 dark:hover:text-brand-300">
                 ← Quay lại danh sách dự án
             </a>
 
-            <h1 class="mt-6 text-4xl font-extrabold text-slate-900 sm:text-5xl">
+            <h1 class="mt-6 text-4xl font-extrabold text-slate-900 sm:text-5xl dark:text-slate-50">
                 {{ $project->title }}
             </h1>
 
-            <p class="mt-4 text-lg text-slate-600">{{ $project->description }}</p>
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">{{ $project->description }}</p>
 
             <ul class="mt-6 flex flex-wrap gap-1.5">
                 @foreach ($project->tags as $tag)

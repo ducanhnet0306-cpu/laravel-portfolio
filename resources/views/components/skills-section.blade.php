@@ -1,6 +1,6 @@
 @props(['portfolio'])
 
-<section id="skills" class="section bg-slate-50/60">
+<section id="skills" class="section bg-slate-50/60 dark:bg-slate-900/40">
     <div class="container-page">
 
         <div class="max-w-2xl reveal">
@@ -16,20 +16,20 @@
             @foreach ($portfolio->skills as $group)
                 <article class="card reveal">
                     <header class="mb-4 flex items-center justify-between">
-                        <h3 class="font-display text-lg font-bold text-slate-900">{{ $group->name }}</h3>
+                        <h3 class="font-display text-lg font-bold text-slate-900 dark:text-slate-50">{{ $group->name }}</h3>
                         <span class="tag">{{ $group->items->count() }} mục</span>
                     </header>
                     <ul class="space-y-4">
                         @foreach ($group->items as $skill)
                             <li>
                                 <div class="flex items-center justify-between text-sm">
-                                    <span class="font-medium text-slate-700">{{ $skill->name }}</span>
+                                    <span class="font-medium text-slate-700 dark:text-slate-300">{{ $skill->name }}</span>
                                     @if($skill->level !== null)
-                                        <span class="text-xs text-slate-500">{{ $skill->level }}%</span>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400">{{ $skill->level }}%</span>
                                     @endif
                                 </div>
                                 @if($skill->level !== null)
-                                    <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-100">
+                                    <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                                         <div class="h-full rounded-full bg-gradient-to-r from-brand-500 to-brand-700"
                                              style="width: {{ $skill->level }}%"></div>
                                     </div>
