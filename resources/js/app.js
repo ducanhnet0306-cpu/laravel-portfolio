@@ -13,7 +13,18 @@ function syncThemeColorMeta() {
     );
 }
 
+function syncThemeToggleUi() {
+    const dark = document.documentElement.classList.contains('dark');
+    document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+        btn.setAttribute('aria-checked', dark ? 'true' : 'false');
+        btn.setAttribute('aria-label', dark ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối');
+        btn.setAttribute('title', dark ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối');
+    });
+}
+
 function initThemeToggle() {
+    syncThemeToggleUi();
+
     document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
         btn.addEventListener('click', () => {
             const root = document.documentElement;
@@ -21,6 +32,7 @@ function initThemeToggle() {
             root.classList.toggle('dark', nextDark);
             localStorage.setItem(THEME_STORAGE_KEY, nextDark ? 'dark' : 'light');
             syncThemeColorMeta();
+            syncThemeToggleUi();
         });
     });
 
@@ -30,6 +42,7 @@ function initThemeToggle() {
         }
         document.documentElement.classList.toggle('dark', e.matches);
         syncThemeColorMeta();
+        syncThemeToggleUi();
     });
 }
 

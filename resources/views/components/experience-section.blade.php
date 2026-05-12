@@ -40,9 +40,9 @@
                         @if($item->achievements->isNotEmpty())
                             <ul class="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-300">
                                 @foreach ($item->achievements as $a)
-                                    <li class="flex gap-2">
-                                        <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-400">
-                                            <x-icon name="check" class="h-3.5 w-3.5" />
+                                    <li class="flex items-start gap-2">
+                                        <span class="mt-0.5 flex aspect-square h-5 w-5 shrink-0 flex-none items-center justify-center rounded-full bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-400">
+                                            <x-icon name="check" class="h-3.5 w-3.5 shrink-0" />
                                         </span>
                                         <span>{{ $a }}</span>
                                     </li>

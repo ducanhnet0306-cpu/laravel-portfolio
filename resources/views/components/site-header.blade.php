@@ -28,14 +28,7 @@
                 </a>
             @endforeach
 
-            <button type="button"
-                    data-theme-toggle
-                    class="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full text-slate-600 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-                    title="Chuyển chế độ sáng / tối"
-                    aria-label="Chuyển chế độ sáng hoặc tối">
-                <span class="dark:hidden"><x-icon name="moon" class="h-5 w-5" /></span>
-                <span class="hidden dark:inline"><x-icon name="sun" class="h-5 w-5" /></span>
-            </button>
+            <x-theme-toggle class="ml-1 hidden md:inline-flex" />
 
             @if(! empty($portfolio->owner['resume_url']))
                 <a href="{{ $portfolio->owner['resume_url'] }}" class="ml-2 btn-primary">
@@ -47,14 +40,7 @@
         </nav>
 
         <div class="flex items-center gap-2 md:hidden">
-            <button type="button"
-                    data-theme-toggle
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
-                    title="Chuyển chế độ sáng / tối"
-                    aria-label="Chuyển chế độ sáng hoặc tối">
-                <span class="dark:hidden"><x-icon name="moon" class="h-5 w-5" /></span>
-                <span class="hidden dark:inline"><x-icon name="sun" class="h-5 w-5" /></span>
-            </button>
+            <x-theme-toggle class="inline-flex" />
 
             <button type="button"
                     data-mobile-nav-toggle

@@ -22,8 +22,8 @@
             <ul class="mt-8 grid gap-3 sm:grid-cols-2">
                 @foreach ((collect($portfolio->skills)->flatMap->items->take(6)) as $skill)
                     <li class="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50/60 px-4 py-3 dark:border-slate-800 dark:bg-slate-900/80">
-                        <span class="grid h-7 w-7 place-items-center rounded-full bg-brand-600/10 text-brand-700 dark:bg-brand-500/15 dark:text-brand-400">
-                            <x-icon name="check" class="h-4 w-4" />
+                        <span class="flex aspect-square h-7 w-7 shrink-0 flex-none items-center justify-center rounded-full bg-brand-600/10 text-brand-700 dark:bg-brand-500/15 dark:text-brand-400">
+                            <x-icon name="check" class="h-4 w-4 shrink-0" />
                         </span>
                         <span class="text-sm font-medium text-slate-700 dark:text-slate-300">{{ $skill->name }}</span>
                     </li>
