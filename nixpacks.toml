@@ -1,0 +1,5 @@
+# Railway/Nixpacks: provider PHP mặc định dùng Nginx — dễ lệch cổng với biến PORT.
+# Ghi đè start để Laravel listen đúng PORT và 0.0.0.0 (Nixpacks vẫn tự chạy npm build nếu có package.json).
+
+[start]
+cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
