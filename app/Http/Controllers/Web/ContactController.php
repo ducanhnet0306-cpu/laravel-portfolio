@@ -39,7 +39,7 @@ class ContactController extends Controller
         }
 
         return redirect()
-            ->route('portfolio.index', [], false)
+            ->route('portfolio.index')
             ->with('contact_status', __('Cảm ơn bạn! Tin nhắn đã được gửi thành công.'))
             ->withFragment('contact');
     }
